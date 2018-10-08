@@ -5,19 +5,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Iniciar Sesión" />
+            android:title="Inicio" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_registro"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Registrarse" />
+            android:title="Registro" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_perfil"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Mi Perfil" />
+            android:title="Perfil" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_cuestionarios"
             android:icon="@drawable/ic_menu_manage"
             android:title="Mis Cuestionarios" />
     </group>
@@ -25,11 +25,11 @@
     <item android:title="Información">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_politica"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Politica de privacidad" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_resultados"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Resultados en el sitio CAM" />
         </menu>
