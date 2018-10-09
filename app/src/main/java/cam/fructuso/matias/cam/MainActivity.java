@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mainDrawerLayout = null;
     private NavigationView menuNavigationView = null;
 
-    private int a = 5;
 
 
     @Override
@@ -32,12 +31,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mainDrawerLayout = findViewById(R.id.drawer_layout);
         menuNavigationView = findViewById(R.id.nav_view);
+
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(getParent(),mainDrawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         mainDrawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         menuNavigationView.setNavigationItemSelectedListener(this);
 
-        // getSupportFragmentManager().beginTransaction().replace(R.id.containerMain,HomeFragment.newInstance("","")).commit(); para cargar el fragment antes de mandarlo a la vista
+         getSupportFragmentManager().beginTransaction().replace(R.id.containerMain,HomeFragment.newInstance("","")).commit(); // para cargar el fragment antes de mandarlo a la vista
     }
 
     @Override
@@ -54,22 +54,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
 
         switch(item.getItemId()){
 
             case R.id.nav_home:
                 getSupportFragmentManager().popBackStack();
-                mainDrawerLayout.closeDrawer(GravityCompat.START);
+                 mainDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_registro:
+
                 swithFragment(R.id.containerMain,RegistroFragment.newInstance("Registro","FragmentRegistro"),"TAG-REGISTRO");
                 mainDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_perfil:
-                swithFragment(R.id.containerMain,LoginFragment.newInstance("Perfil","FragmentPerfil"),"TAG-PERFIL");
+                swithFragment(R.id.containerMain,PerfilFragment.newInstance("Perfil","FragmentPerfil"),"TAG-PERFIL");
                 mainDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_cuestionarios:
@@ -94,20 +94,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void swithFragment (int idContainer, Fragment fragment, String tag ){
 
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+
+
         if (fragment !=null){
 
             FragmentTransaction transaction = null;
 
             while (fragmentManager.popBackStackImmediate());
 
-            transaction = fragmentManager.beginTransaction().replace(idContainer,fragment,tag).setTransitionStyle(a);
+
+            transaction = fragmentManager.beginTransaction().replace(idContainer,fragment,tag);
 
             if (!(fragment instanceof HomeFragment)) // dejar el home por default hasta abajo
                 transaction.addToBackStack(tag);
+              //transaction.addToBackStack(null);
             transaction.commit();
 
         }
 
 
     }
+
+
 }
