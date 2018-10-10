@@ -73,8 +73,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 mainDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_cuestionarios:
-                swithFragment(R.id.containerMain,CuestionariosFragment.newInstance("Cuestionarios","FragmentCuestionarios"),"TAG-CUESTIONARIOS");
-                mainDrawerLayout.closeDrawer(GravityCompat.START);
+                Intent cuestionariosIntent = new Intent(getBaseContext(),CuestionariosActivity.class);
+                startActivity(cuestionariosIntent);
+                //swithFragment(R.id.containerMain,CuestionariosFragment.newInstance("Cuestionarios","FragmentCuestionarios"),"TAG-CUESTIONARIOS");
+                //mainDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_politica:
                 swithFragment(R.id.containerMain,PoliticaFragment.newInstance("Politica de privacidad","FragmentPolitica"),"TAG-POLITICA");
